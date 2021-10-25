@@ -212,7 +212,7 @@ public class TestRunner
       boolean skipFailedInvocationCounts,
       Collection<IInvokedMethodListener> invokedMethodListeners,
       List<IClassListener> classListeners) {
-    this.comparator = Systematiser.getComparator();
+    this.comparator = newComparator(true);//Systematiser.getComparator();
     init(
         configuration,
         suite,

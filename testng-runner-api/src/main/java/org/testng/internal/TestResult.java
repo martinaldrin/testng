@@ -392,7 +392,8 @@ public class TestResult implements ITestResult {
       // If we found atleast one skipped due to reason, then its time to return back.
       return Collections.unmodifiableList(skippedDueTo);
     }
-    // Looks like we didnt have any configuration failures. So some upstream method perhaps failed.
+    // Looks like we didnt have any configuration failures. So some upstream method
+    // perhaps failed.
     if (m_method.getMethodsDependedUpon().length == 0) {
       // Maybe group dependencies exist ?
       if (m_method.getGroupsDependedUpon().length == 0) {

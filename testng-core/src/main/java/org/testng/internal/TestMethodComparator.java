@@ -11,6 +11,7 @@ public class TestMethodComparator implements Comparator<ITestNGMethod> {
   }
 
   public static int compareStatic(ITestNGMethod o1, ITestNGMethod o2) {
+	  System.out.println(o1.getMethodName() + ": " + o1.getPriority() + " <=> " + o2.getMethodName() + ": " + o2.getPriority());
     int prePriDiff = Integer.compare(o1.getInterceptedPriority(), o2.getInterceptedPriority());
     if (prePriDiff != 0) {
       return prePriDiff;

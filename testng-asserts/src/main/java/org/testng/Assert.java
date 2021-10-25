@@ -1807,7 +1807,7 @@ public class Assert {
     if (!Objects.equals(actual, expected)) {
       return "Sets differ: expected " + expected + " but got " + actual;
     }
-    return getNotEqualReason(actual.iterator(), expected.iterator());
+    return null;
   }
 
   /**

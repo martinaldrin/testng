@@ -327,6 +327,7 @@ public class ClonedMethod implements ITestNGMethod {
 
   @Override
   public void setPriority(int priority) {
+	  m_method.setPriority(priority);
     // ignored
   }
 
@@ -337,6 +338,7 @@ public class ClonedMethod implements ITestNGMethod {
 
   @Override
   public void setInterceptedPriority(int priority) {
+	  m_method.setInterceptedPriority(priority);
     // ignored
   }
 

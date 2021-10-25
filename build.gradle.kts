@@ -5,7 +5,7 @@ plugins {
 }
 
 val String.v: String get() = rootProject.extra["$this.version"] as String
-val buildVersion = "testng".v + releaseParams.snapshotSuffix
+val buildVersion = "testng".v 
 version = buildVersion
 
 println("Building testng $buildVersion")

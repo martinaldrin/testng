@@ -9,7 +9,7 @@ public class TestOrConfiguration extends BaseAnnotation implements ITestOrConfig
   private String[] m_dependsOnGroups = {};
   private String[] m_dependsOnMethods = {};
   private String m_description = "";
-  private int m_priority;
+  private int m_priority = 0;
   private long m_timeOut = 0;
 
   @Override
@@ -61,7 +61,8 @@ public class TestOrConfiguration extends BaseAnnotation implements ITestOrConfig
   public void setDescription(String description) {
     m_description = description;
   }
-
+  
+  @Override
   public int getPriority() {
     return m_priority;
   }
@@ -79,4 +80,5 @@ public class TestOrConfiguration extends BaseAnnotation implements ITestOrConfig
   public long getTimeOut() {
     return m_timeOut;
   }
+
 }

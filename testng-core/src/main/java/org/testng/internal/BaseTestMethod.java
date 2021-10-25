@@ -697,6 +697,7 @@ public abstract class BaseTestMethod implements ITestNGMethod, IInvocationStatus
 
   @Override
   public void setPriority(int priority) {
+	  System.out.println("setPriority: " + m_methodName + ", prio:" +priority);
     m_priority = priority;
   }
 
@@ -707,6 +708,7 @@ public abstract class BaseTestMethod implements ITestNGMethod, IInvocationStatus
 
   @Override
   public void setInterceptedPriority(int priority) {
+	  System.out.println("setInterceptedPriority: " + m_methodName + ", prio:" +priority);
     m_interceptedPriority = priority;
   }
 

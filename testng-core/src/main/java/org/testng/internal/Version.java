@@ -6,7 +6,7 @@ public final class Version {
 
   private static String initVersion() {
     final String version = Version.class.getPackage().getImplementationVersion();
-    return version != null ? version : "[WORKING]";
+    return "7.5-FORK-20211022";
   }
 
   public static String getVersionString() {
