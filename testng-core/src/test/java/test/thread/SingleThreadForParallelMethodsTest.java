@@ -9,7 +9,7 @@ public class SingleThreadForParallelMethodsTest extends BaseTest {
 
   @Test(description = "GITHUB #1066: Regression is in priority. It broke parallel mode")
   public void testPriorityDoesNotAffectSingleThreadOrder() {
-    PriorityInSingleThreadTest.initThreadLog();
+    BaseThreadTest.initThreadLog();
     Helper.reset();
     addClass(PriorityInSingleThreadTest.class);
 
@@ -18,6 +18,6 @@ public class SingleThreadForParallelMethodsTest extends BaseTest {
 
     run();
 
-    Assert.assertEquals(PriorityInSingleThreadTest.getThreadCount(), 1);
+    Assert.assertEquals(BaseThreadTest.getThreadCount(), 1);
   }
 }

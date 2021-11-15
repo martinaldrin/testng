@@ -7,11 +7,8 @@ import org.junit.Assert;
 /** @author lukas */
 public abstract class JUnitSample4 extends TestCase {
 
-  private int i = 0;
-
   public JUnitSample4(String name, int i) {
     super(name);
-    this.i = i;
   }
 
   public void testXY() {

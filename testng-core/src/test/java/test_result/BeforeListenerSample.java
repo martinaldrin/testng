@@ -1,6 +1,9 @@
 package test_result;
 
-import org.testng.*;
+import org.testng.Assert;
+import org.testng.IInvokedMethod;
+import org.testng.IInvokedMethodListener;
+import org.testng.ITestResult;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 

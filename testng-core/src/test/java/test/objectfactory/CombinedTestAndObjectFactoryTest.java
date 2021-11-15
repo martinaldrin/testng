@@ -2,7 +2,6 @@ package test.objectfactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
 import test.InvokedMethodNameListener;
@@ -15,7 +14,7 @@ public class CombinedTestAndObjectFactoryTest extends SimpleBaseTest {
     TestNG tng = create(CombinedTestAndObjectFactorySample.class);
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 

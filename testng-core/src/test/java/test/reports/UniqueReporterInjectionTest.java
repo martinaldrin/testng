@@ -1,7 +1,10 @@
 package test.reports;
 
 import java.util.List;
-import org.testng.*;
+import org.testng.Assert;
+import org.testng.IReporter;
+import org.testng.ISuite;
+import org.testng.TestNG;
 import org.testng.annotations.Test;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
@@ -16,7 +19,7 @@ public class UniqueReporterInjectionTest extends SimpleBaseTest {
     createXmlClass(xmlTest, UniqueReporterInjectionSample2.class);
     TestNG tng = create(xmlSuite);
     tng.setUseDefaultListeners(false);
-    tng.addListener((ITestNGListener) new ReporterListenerForIssue1227());
+    tng.addListener(new ReporterListenerForIssue1227());
     tng.run();
     // Since we have another reporting listener that is injected via the service loader file
     // reporting listeners size will now have to be three (because the ExitCodeListener is also a

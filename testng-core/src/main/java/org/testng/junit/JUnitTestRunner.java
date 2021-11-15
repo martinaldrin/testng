@@ -14,7 +14,12 @@ import junit.framework.Test;
 import junit.framework.TestListener;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
-import org.testng.*;
+import org.testng.IInvokedMethodListener;
+import org.testng.ITestListener;
+import org.testng.ITestNGMethod;
+import org.testng.ITestObjectFactory;
+import org.testng.ITestResult;
+import org.testng.TestNGException;
 import org.testng.collections.Lists;
 import org.testng.internal.ITestResultNotifier;
 import org.testng.internal.TestListenerHelper;
@@ -94,6 +99,7 @@ public class JUnitTestRunner implements TestListener, IJUnitTestRunner {
     TestListenerHelper.runTestListeners(tr, listeners);
   }
 
+  @Override
   public void setInvokedMethodListeners(Collection<IInvokedMethodListener> listeners) {
     m_invokedMethodListeners = listeners;
   }

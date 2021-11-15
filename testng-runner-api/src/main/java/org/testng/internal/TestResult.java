@@ -361,14 +361,17 @@ public class TestResult implements ITestResult {
     return parameterIndex;
   }
 
+  @Override
   public boolean wasRetried() {
     return m_wasRetried;
   }
 
+  @Override
   public void setWasRetried(boolean wasRetried) {
     this.m_wasRetried = wasRetried;
   }
 
+  @Override
   public List<ITestNGMethod> getSkipCausedBy() {
     if (this.m_status != SKIP || skipAnalysed) {
       return Collections.unmodifiableList(skippedDueTo);
@@ -432,6 +435,7 @@ public class TestResult implements ITestResult {
     return Collections.unmodifiableList(skippedDueTo);
   }
 
+  @Override
   public String id() {
     return id;
   }

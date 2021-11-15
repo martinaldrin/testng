@@ -1,6 +1,13 @@
 package org.testng.xml;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 import org.testng.TestNGException;
 import org.testng.collections.Lists;
 import org.testng.collections.Maps;
@@ -424,8 +431,7 @@ public class XmlTest implements Cloneable {
     result.setJUnit(isJUnit());
     result.setParallel(getParallel());
     result.setVerbose(getVerbose());
-    Map<String, String> localParameters = new HashMap<>();
-    localParameters.putAll(getLocalParameters());
+    Map<String, String> localParameters = new HashMap<>(getLocalParameters());
     result.setParameters(localParameters);
     result.setXmlPackages(getXmlPackages());
     result.setTimeOut(getTimeOut());
@@ -547,8 +553,7 @@ public class XmlTest implements Cloneable {
     if (this == obj) {
       return true;
     }
-    if (obj == null) return XmlSuite.f();
-    if (getClass() != obj.getClass()) return XmlSuite.f();
+    if ((obj == null) || (getClass() != obj.getClass())) return XmlSuite.f();
     XmlTest other = (XmlTest) obj;
     if (m_xmlGroups == null) {
       if (other.m_xmlGroups != null) return XmlSuite.f();

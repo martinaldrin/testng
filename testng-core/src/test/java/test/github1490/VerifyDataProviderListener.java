@@ -54,7 +54,7 @@ public class VerifyDataProviderListener extends SimpleBaseTest {
         expected.add(txt);
       }
     }
-    assertThat(InstanceAwareLocalDataProviderListener.messages).containsAll(expected);
+    assertThat(LocalDataProviderListener.messages).containsAll(expected);
   }
 
   @Test

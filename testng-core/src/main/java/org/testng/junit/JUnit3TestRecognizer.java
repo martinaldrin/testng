@@ -9,6 +9,7 @@ public class JUnit3TestRecognizer implements JUnitTestRecognizer {
 
   public JUnit3TestRecognizer() {}
 
+  @Override
   public boolean isTest(Class c) {
     // class implementing junit.framework.Test with at least one test* method
     if (Test.class.isAssignableFrom(c)) {
@@ -30,7 +31,6 @@ public class JUnit3TestRecognizer implements JUnitTestRecognizer {
         return m.getReturnType().isAssignableFrom(Test.class);
       }
     } catch (Throwable t) {
-      return false;
     }
     return false;
   }

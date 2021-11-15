@@ -26,10 +26,12 @@ public class GroupConfigMethodArguments extends Arguments {
     return getTestMethod().getXmlTest().getSuite();
   }
 
+  @Override
   public Map<String, String> getParameters() {
     return params;
   }
 
+  @Override
   public Object getInstance() {
     return instance;
   }

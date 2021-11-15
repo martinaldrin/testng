@@ -3,7 +3,6 @@ package test.listeners.github1130;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
-import org.testng.ITestNGListener;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
@@ -26,7 +25,7 @@ public class GitHub1130Test extends SimpleBaseTest {
     MyListener.beforeSuiteCount = new ArrayList<>();
     MyListener.beforeClassCount = new ArrayList<>();
     TestListenerAdapter adapter = new TestListenerAdapter();
-    tng.addListener((ITestNGListener) adapter);
+    tng.addListener(adapter);
     tng.run();
     assertThat(adapter.getFailedTests()).isEmpty();
     assertThat(adapter.getSkippedTests()).isEmpty();

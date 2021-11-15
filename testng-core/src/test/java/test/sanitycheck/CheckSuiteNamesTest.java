@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
@@ -23,7 +22,7 @@ public class CheckSuiteNamesTest extends SimpleBaseTest {
     TestNG tng = create();
     String testngXmlPath = getPathToResource("sanitycheck/test-s-b.xml");
     tng.setTestSuites(Collections.singletonList(testngXmlPath));
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
     tng.run();
     Assert.assertEquals(tla.getPassedTests().size(), 4);
   }
@@ -35,7 +34,7 @@ public class CheckSuiteNamesTest extends SimpleBaseTest {
     TestNG tng = create();
     String testngXmlPath = getPathToResource("sanitycheck/test-s-a.xml");
     tng.setTestSuites(Collections.singletonList(testngXmlPath));
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
     tng.run();
     Assert.assertEquals(tla.getTestContexts().get(0).getSuite().getName(), "SanityCheck suites");
     Assert.assertEquals(tla.getTestContexts().get(1).getSuite().getName(), "SanityCheck suites");

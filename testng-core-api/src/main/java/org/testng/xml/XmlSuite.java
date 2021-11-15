@@ -59,7 +59,6 @@ public class XmlSuite implements Cloneable {
         }
         if ("false".equalsIgnoreCase(parallel)) {
           warnUser("false", NONE);
-          return ParallelMode.NONE;
         }
         return ParallelMode.NONE;
       }
@@ -729,10 +728,7 @@ public class XmlSuite implements Cloneable {
     if (this == obj) {
       return true;
     }
-    if (obj == null) {
-      return f();
-    }
-    if (getClass() != obj.getClass()) {
+    if ((obj == null) || (getClass() != obj.getClass())) {
       return f();
     }
     XmlSuite other = (XmlSuite) obj;

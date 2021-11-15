@@ -1,7 +1,6 @@
 package test.testng674;
 
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
 import org.testng.xml.XmlSuite;
@@ -63,7 +62,7 @@ public class BeforeClassSkipExceptionTest extends SimpleBaseTest {
     createXmlClass(xmlTest2, TestClassSampleContainer.RegularTestClass.class);
     TestNG tng = create(xmlSuite);
     ReportingListenerFor674 reporter = new ReportingListenerFor674();
-    tng.addListener((ITestNGListener) reporter);
+    tng.addListener(reporter);
     tng.run();
     Assert.assertEquals(reporter.getErrors().size(), 2);
     for (Throwable error : reporter.getErrors()) {
@@ -95,7 +94,7 @@ public class BeforeClassSkipExceptionTest extends SimpleBaseTest {
       createXmlClass(xmlTest, clazz);
     }
     TestNG tng = create(xmlSuite);
-    tng.addListener((ITestNGListener) reporter);
+    tng.addListener(reporter);
     tng.run();
     Assert.assertEquals(reporter.getErrors().size(), expectedCount);
     for (Throwable error : reporter.getErrors()) {

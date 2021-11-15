@@ -1,7 +1,6 @@
 package test.configuration;
 
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import test.SimpleBaseTest;
@@ -11,7 +10,7 @@ public abstract class ConfigurationBaseTest extends SimpleBaseTest {
     TestNG tng = create(classes);
 
     TestListenerAdapter tla = new TestListenerAdapter();
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
     tng.run();
 
     Assert.assertEquals(

@@ -4,7 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.testng.*;
+import org.testng.IMethodInstance;
+import org.testng.IMethodInterceptor;
+import org.testng.ITestContext;
+import org.testng.TestNG;
 import org.testng.annotations.Test;
 import test.InvokedMethodNameListener;
 import test.SimpleBaseTest;
@@ -30,7 +33,7 @@ public class Issue521Test extends SimpleBaseTest {
         });
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 

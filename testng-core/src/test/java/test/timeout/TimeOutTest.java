@@ -93,9 +93,9 @@ public class TimeOutTest extends BaseTest {
     addClass(TimeOutWithParallelSample.class);
     setParallel(ParallelMode.METHODS);
     run();
-    Assert.assertEquals(getFailedTests().values().size(), 1);
-    Assert.assertEquals(getSkippedTests().values().size(), 0);
-    Assert.assertEquals(getPassedTests().values().size(), 0);
+    Assert.assertEquals(getFailedTests().size(), 1);
+    Assert.assertEquals(getSkippedTests().size(), 0);
+    Assert.assertEquals(getPassedTests().size(), 0);
     ITestResult result = getFailedTests().values().iterator().next().get(0);
     long time = result.getEndMillis() - result.getStartMillis();
     Assert.assertTrue(time < 2000);

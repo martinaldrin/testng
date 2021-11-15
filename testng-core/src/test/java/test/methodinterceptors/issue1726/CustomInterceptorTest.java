@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
-import org.testng.ITestNGListener;
 import org.testng.ITestResult;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
@@ -25,7 +24,7 @@ public class CustomInterceptorTest extends SimpleBaseTest {
     xmlTest.setPreserveOrder(false);
     TestNG testng = create(suite);
     testng.addListener(new PriorityInterceptor());
-    testng.addListener((ITestNGListener) new MethodOrderTracker());
+    testng.addListener(new MethodOrderTracker());
     testng.run();
     List<String> expected =
         Arrays.asList(

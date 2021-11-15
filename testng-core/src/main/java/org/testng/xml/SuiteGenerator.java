@@ -29,16 +29,10 @@ public class SuiteGenerator {
     LaunchSuite result;
     Collection<String> classes =
         classAndMethodNames != null ? classAndMethodNames.keySet() : EMPTY_CLASS_LIST;
-    if ((null != groupNames) && !groupNames.isEmpty()) {
+    if (((null != groupNames) && !groupNames.isEmpty())
+        || (packageNames != null && packageNames.size() > 0)) {
       //
       // Create a suite from groups
-      //
-      result =
-          new LaunchSuite.ClassListSuite(
-              projectName, packageNames, classes, groupNames, parameters, annotationType, logLevel);
-    } else if (packageNames != null && packageNames.size() > 0) {
-      //
-      // Create a suite from packages
       //
       result =
           new LaunchSuite.ClassListSuite(

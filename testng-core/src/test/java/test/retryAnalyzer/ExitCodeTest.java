@@ -3,7 +3,6 @@ package test.retryAnalyzer;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
 import test.SimpleBaseTest;
@@ -26,7 +25,7 @@ public class ExitCodeTest extends SimpleBaseTest {
   @Test
   public void exitsWithZeroAfterSuccessfulRetry() {
     TestNG tng = create(EventualSuccess.class);
-    tng.addListener((ITestNGListener) new TestResultPruner());
+    tng.addListener(new TestResultPruner());
     tng.run();
     assertEquals(tng.getStatus(), 0);
   }

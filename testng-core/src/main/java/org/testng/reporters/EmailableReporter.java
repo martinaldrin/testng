@@ -136,7 +136,7 @@ public class EmailableReporter implements IReporter {
       Map<String, ISuiteResult> r = suite.getResults();
       for (ISuiteResult r2 : r.values()) {
         ITestContext testContext = r2.getTestContext();
-        if (r.values().size() > 0) {
+        if (r.size() > 0) {
           m_out.println("<h1>" + testContext.getName() + "</h1>");
         }
         resultDetail(testContext.getFailedConfigurations());

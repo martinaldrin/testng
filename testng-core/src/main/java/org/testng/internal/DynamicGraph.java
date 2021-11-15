@@ -22,6 +22,7 @@ public class DynamicGraph<T> implements IDynamicGraph<T> {
   private Set<IExecutionVisualiser> visualisers = Sets.newHashSet();
 
   /** Add a node to the graph. */
+  @Override
   public boolean addNode(T node) {
     return m_nodesReady.add(node);
   }
@@ -32,15 +33,18 @@ public class DynamicGraph<T> implements IDynamicGraph<T> {
    * @param from - Represents the edge that depends on another edge.
    * @param to - Represents the edge on which another edge depends upon.
    */
+  @Override
   public void addEdge(int weight, T from, T to) {
     m_edges.addEdge(weight, from, to, false);
   }
 
+  @Override
   public void setVisualisers(Set<IExecutionVisualiser> listener) {
     visualisers = listener;
   }
 
   /** Add an edge between two nodes. */
+  @Override
   public void addEdges(int weight, T from, Iterable<T> tos) {
     for (T to : tos) {
       addEdge(weight, from, to);
@@ -48,6 +52,7 @@ public class DynamicGraph<T> implements IDynamicGraph<T> {
   }
 
   /** @return a set of all the nodes that don't depend on any other nodes. */
+  @Override
   public List<T> getFreeNodes() {
     // Get a list of nodes that are ready and have no outgoing edges.
     Set<T> free = Sets.newLinkedHashSet(m_nodesReady);
@@ -76,6 +81,7 @@ public class DynamicGraph<T> implements IDynamicGraph<T> {
     return finalResult;
   }
 
+  @Override
   public List<T> getDependenciesFor(T node) {
     Map<T, Integer> data = m_edges.to(node);
     if (data == null) {
@@ -85,6 +91,7 @@ public class DynamicGraph<T> implements IDynamicGraph<T> {
   }
 
   /** Set the status for a set of nodes. */
+  @Override
   public void setStatus(Collection<T> nodes, Status status) {
     for (T n : nodes) {
       setStatus(n, status);
@@ -92,6 +99,7 @@ public class DynamicGraph<T> implements IDynamicGraph<T> {
   }
 
   /** Set the status for a node. */
+  @Override
   public void setStatus(T node, Status status) {
     switch (status) {
       case RUNNING:
@@ -110,11 +118,8 @@ public class DynamicGraph<T> implements IDynamicGraph<T> {
           //   Given graph c -> b -> a, then add c -> a before removing b.
           for (Map.Entry<T, Integer> out : outgoingEdges.entrySet()) {
             for (Map.Entry<T, Integer> in : incomingEdges.entrySet()) {
-              if (in.getKey() == out.getKey()) {
+              if ((in.getKey() == out.getKey()) || (in.getValue() > out.getValue())) {
                 // Don't create a one node cycle.
-                continue;
-              } else if (in.getValue() > out.getValue()) {
-                // Don't add edges if we're patching up a lower weighted cycle.
                 continue;
               }
 
@@ -138,14 +143,17 @@ public class DynamicGraph<T> implements IDynamicGraph<T> {
   }
 
   /** @return the number of nodes in this graph. */
+  @Override
   public int getNodeCount() {
     return m_nodesReady.size() + m_nodesRunning.size() + m_nodesFinished.size();
   }
 
+  @Override
   public int getNodeCountWithStatus(Status status) {
     return getNodesWithStatus(status).size();
   }
 
+  @Override
   public Set<T> getNodesWithStatus(Status status) {
     switch (status) {
       case READY:
@@ -180,6 +188,7 @@ public class DynamicGraph<T> implements IDynamicGraph<T> {
   }
 
   /** @return a .dot file (GraphViz) version of this graph. */
+  @Override
   public String toDot() {
     String FREE = "[style=filled color=yellow]";
     String RUNNING = "[style=filled color=green]";

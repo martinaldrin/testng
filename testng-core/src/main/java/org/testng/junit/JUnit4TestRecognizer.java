@@ -9,6 +9,7 @@ public final class JUnit4TestRecognizer implements JUnitTestRecognizer {
 
   public JUnit4TestRecognizer() {}
 
+  @Override
   public boolean isTest(Class c) {
     for (Annotation an : c.getAnnotations()) {
       if (RunWith.class.isAssignableFrom(an.annotationType())) {

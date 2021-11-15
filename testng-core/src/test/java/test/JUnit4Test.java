@@ -3,7 +3,14 @@ package test;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import test.junit4.*;
+import test.junit4.BeforeClassJUnit4Sample;
+import test.junit4.ClassRuleJUnit4Sample;
+import test.junit4.InheritedTest;
+import test.junit4.JUnit4Child;
+import test.junit4.JUnit4ParameterizedTest;
+import test.junit4.JUnit4Sample1;
+import test.junit4.JUnit4Sample2;
+import test.junit4.JUnit4SampleSuite;
 
 public class JUnit4Test extends BaseTest {
 

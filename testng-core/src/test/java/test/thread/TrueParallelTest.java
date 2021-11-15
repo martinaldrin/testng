@@ -29,7 +29,7 @@ public class TrueParallelTest extends SimpleBaseTest {
       // A sequential result will look like "m1 m1 m3 m3 m2 m2 m4 m4 m5 m5". A properly
       // multithreaded result will have at least one non-consecutive different pair:
       // "m1 m1 m3 m2 m4 m4 m2 m3 m5 m5"
-      List<String> strings = TrueParallelSampleTest.getStrings();
+      List<String> strings = BaseThreadTest.getStrings();
       boolean ii = isInterleaved(strings);
       success = success || ii;
       //      System.out.println(strings + " -> " + ii);

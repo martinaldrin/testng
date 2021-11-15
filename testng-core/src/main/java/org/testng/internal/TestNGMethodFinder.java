@@ -1,6 +1,15 @@
 package org.testng.internal;
 
-import static org.testng.internal.TestNGMethodFinder.MethodType.*;
+import static org.testng.internal.TestNGMethodFinder.MethodType.AFTER_CLASS;
+import static org.testng.internal.TestNGMethodFinder.MethodType.AFTER_GROUPS;
+import static org.testng.internal.TestNGMethodFinder.MethodType.AFTER_SUITE;
+import static org.testng.internal.TestNGMethodFinder.MethodType.AFTER_TEST;
+import static org.testng.internal.TestNGMethodFinder.MethodType.AFTER_TEST_METHOD;
+import static org.testng.internal.TestNGMethodFinder.MethodType.BEFORE_CLASS;
+import static org.testng.internal.TestNGMethodFinder.MethodType.BEFORE_GROUPS;
+import static org.testng.internal.TestNGMethodFinder.MethodType.BEFORE_SUITE;
+import static org.testng.internal.TestNGMethodFinder.MethodType.BEFORE_TEST;
+import static org.testng.internal.TestNGMethodFinder.MethodType.BEFORE_TEST_METHOD;
 
 import java.lang.reflect.Method;
 import java.util.Comparator;

@@ -6,12 +6,25 @@ import com.google.inject.Injector;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.testng.collections.Lists;
 import org.testng.collections.Maps;
 import org.testng.collections.Sets;
-import org.testng.internal.*;
+import org.testng.internal.Attributes;
+import org.testng.internal.IConfiguration;
+import org.testng.internal.RuntimeBehavior;
+import org.testng.internal.Utils;
 import org.testng.internal.annotations.IAnnotationFinder;
 import org.testng.internal.invokers.ConfigMethodArguments;
 import org.testng.internal.invokers.ConfigMethodArguments.Builder;
@@ -355,7 +368,7 @@ public class SuiteRunner implements ISuite, IInvokedMethodListener {
     // a <file-suite> tag and no real tests)
     //
     if (invoker != null) {
-      if (!beforeSuiteMethods.values().isEmpty()) {
+      if (!beforeSuiteMethods.isEmpty()) {
         ConfigMethodArguments arguments =
             new Builder()
                 .usingConfigMethodsAs(beforeSuiteMethods.values())
@@ -383,7 +396,7 @@ public class SuiteRunner implements ISuite, IInvokedMethodListener {
       //
       // Invoke afterSuite methods
       //
-      if (!afterSuiteMethods.values().isEmpty()) {
+      if (!afterSuiteMethods.isEmpty()) {
         ConfigMethodArguments arguments =
             new Builder()
                 .usingConfigMethodsAs(afterSuiteMethods.values())

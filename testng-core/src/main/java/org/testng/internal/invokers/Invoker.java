@@ -53,10 +53,12 @@ public class Invoker implements IInvoker {
             m_configInvoker);
   }
 
+  @Override
   public ConfigInvoker getConfigInvoker() {
     return m_configInvoker;
   }
 
+  @Override
   public TestInvoker getTestInvoker() {
     return m_testInvoker;
   }

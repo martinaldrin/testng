@@ -1,6 +1,11 @@
 package org.testng.junit;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 import java.util.regex.Pattern;
 import org.junit.runner.Description;
 import org.junit.runner.JUnitCore;
@@ -9,7 +14,13 @@ import org.junit.runner.Result;
 import org.junit.runner.manipulation.Filter;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
-import org.testng.*;
+import org.testng.IConfigurationListener;
+import org.testng.IInvokedMethodListener;
+import org.testng.ITestListener;
+import org.testng.ITestNGMethod;
+import org.testng.ITestObjectFactory;
+import org.testng.ITestResult;
+import org.testng.TestNGException;
 import org.testng.collections.Lists;
 import org.testng.internal.ITestResultNotifier;
 import org.testng.internal.TestResult;
@@ -42,6 +53,7 @@ public class JUnit4TestRunner implements IJUnitTestRunner {
     return m_methods;
   }
 
+  @Override
   public void setInvokedMethodListeners(Collection<IInvokedMethodListener> listeners) {
     m_invokeListeners = listeners;
   }
@@ -116,7 +128,7 @@ public class JUnit4TestRunner implements IJUnitTestRunner {
       ITestResult tr = m_findedMethods.get(failure.getDescription());
       validate(tr, failure.getDescription());
       runAfterInvocationListeners(tr);
-      tr.setStatus(TestResult.SKIP);
+      tr.setStatus(ITestResult.SKIP);
       tr.setEndMillis(Calendar.getInstance().getTimeInMillis());
       tr.setThrowable(failure.getException());
       m_parentRunner.addSkippedTest(tr.getMethod(), tr);
@@ -140,7 +152,7 @@ public class JUnit4TestRunner implements IJUnitTestRunner {
         // Not a test method, should be a config
         tr = createTestResult(objectFactory, failure.getDescription());
         runAfterInvocationListeners(tr);
-        tr.setStatus(TestResult.FAILURE);
+        tr.setStatus(ITestResult.FAILURE);
         tr.setEndMillis(Calendar.getInstance().getTimeInMillis());
         tr.setThrowable(failure.getException());
         for (IConfigurationListener l : m_parentRunner.getConfigurationListeners()) {
@@ -151,7 +163,7 @@ public class JUnit4TestRunner implements IJUnitTestRunner {
         }
       } else {
         runAfterInvocationListeners(tr);
-        tr.setStatus(TestResult.FAILURE);
+        tr.setStatus(ITestResult.FAILURE);
         tr.setEndMillis(Calendar.getInstance().getTimeInMillis());
         tr.setThrowable(failure.getException());
         m_parentRunner.addFailedTest(tr.getMethod(), tr);
@@ -167,7 +179,7 @@ public class JUnit4TestRunner implements IJUnitTestRunner {
       validate(tr, description);
       runAfterInvocationListeners(tr);
       if (!notified.contains(description)) {
-        tr.setStatus(TestResult.SUCCESS);
+        tr.setStatus(ITestResult.SUCCESS);
         tr.setEndMillis(Calendar.getInstance().getTimeInMillis());
         m_parentRunner.addPassedTest(tr.getMethod(), tr);
         for (ITestListener l : m_listeners) {
@@ -184,7 +196,7 @@ public class JUnit4TestRunner implements IJUnitTestRunner {
         ITestResult tr = m_findedMethods.get(description);
         validate(tr, description);
         runAfterInvocationListeners(tr);
-        tr.setStatus(TestResult.SKIP);
+        tr.setStatus(ITestResult.SKIP);
         tr.setEndMillis(tr.getStartMillis());
         m_parentRunner.addSkippedTest(tr.getMethod(), tr);
         m_methods.add(tr.getMethod());

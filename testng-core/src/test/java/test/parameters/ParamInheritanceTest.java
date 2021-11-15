@@ -6,7 +6,6 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
@@ -26,7 +25,7 @@ public class ParamInheritanceTest extends SimpleBaseTest {
     tng.setTestSuites(Arrays.asList(getPathToResource("param-inheritance/parent-suite.xml")));
 
     TestListenerAdapter tla = new TestListenerAdapter();
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
 
     OutputStream os = new ByteArrayOutputStream();
     PrintStream out = System.out;
@@ -59,7 +58,7 @@ public class ParamInheritanceTest extends SimpleBaseTest {
     tng.setTestSuites(Arrays.asList(getPathToResource("parametertest/parent-suite.xml")));
 
     TestListenerAdapter tla = new TestListenerAdapter();
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
 
     tng.run();
 

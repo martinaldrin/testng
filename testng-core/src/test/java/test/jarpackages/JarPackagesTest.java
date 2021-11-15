@@ -2,7 +2,6 @@ package test.jarpackages;
 
 import java.io.File;
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
@@ -12,13 +11,21 @@ public class JarPackagesTest extends SimpleBaseTest {
   private TestListenerAdapter init(String jarFile) {
     TestNG tng = create();
     File currentDir = new File(".");
-    String path = currentDir.getAbsolutePath();
+    StringBuilder path = new StringBuilder().append(currentDir.getAbsolutePath());
     char s = File.separatorChar;
-    path = path + s + "test" + s + "src" + s + "test" + s + "jarpackages" + s;
-    String finalPath = path + jarFile;
+    path.append(s)
+        .append("test")
+        .append(s)
+        .append("src")
+        .append(s)
+        .append("test")
+        .append(s)
+        .append("jarpackages")
+        .append(s);
+    String finalPath = path.append(jarFile).toString();
     tng.setTestJar(finalPath);
     TestListenerAdapter result = new TestListenerAdapter();
-    tng.addListener((ITestNGListener) result);
+    tng.addListener(result);
     tng.run();
 
     return result;

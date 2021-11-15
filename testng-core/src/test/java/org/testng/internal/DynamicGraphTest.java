@@ -325,21 +325,21 @@ public class DynamicGraphTest extends SimpleBaseTest {
   public void testGainWeight() {
     DynamicGraph<String> dg = new DynamicGraph<>();
     dg.addEdge(1, "a", "b");
-    assertThat(dg.getEdges().values().size()).isEqualTo(1);
+    assertThat(dg.getEdges().size()).isEqualTo(1);
     assertThat(dg.getEdges().get("a").get("b")).isEqualTo(1);
 
     // Duplicated edge, but with lower weight
     dg.addEdge(0, "a", "b");
 
     // Should only be one edge with same weight
-    assertThat(dg.getEdges().values().size()).isEqualTo(1);
+    assertThat(dg.getEdges().size()).isEqualTo(1);
     assertThat(dg.getEdges().get("a").get("b")).isEqualTo(1);
 
     // Duplicated edge, but with higher weight
     dg.addEdge(2, "a", "b");
 
     // Should only be one edge with weight of 2 now.
-    assertThat(dg.getEdges().values().size()).isEqualTo(1);
+    assertThat(dg.getEdges().size()).isEqualTo(1);
     assertThat(dg.getEdges().get("a").get("b")).isEqualTo(2);
   }
 

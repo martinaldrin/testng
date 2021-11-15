@@ -1,7 +1,6 @@
 package test.regression;
 
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
@@ -13,7 +12,7 @@ public class BeforeTestFailingTest extends SimpleBaseTest {
   public void beforeTestFailingShouldCauseSkips() {
     TestNG tng = create(MyTestngTest2.class);
     TestListenerAdapter tla = new TestListenerAdapter();
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
     tng.run();
 
     Assert.assertEquals(tla.getSkippedTests().size(), 1);

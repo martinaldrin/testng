@@ -8,7 +8,6 @@ import junit.framework.TestCase;
  * @author Cedric Beust, May 5, 2004
  */
 public class JUnitSample1 extends TestCase {
-  private String m_field = null;
   public static final String EXPECTED2 = "testSample1_2";
   public static final String EXPECTED1 = "testSample1_1";
 
@@ -21,14 +20,10 @@ public class JUnitSample1 extends TestCase {
   }
 
   @Override
-  public void setUp() {
-    m_field = "foo";
-  }
+  public void setUp() {}
 
   @Override
-  public void tearDown() {
-    m_field = null;
-  }
+  public void tearDown() {}
 
   public void testSample1_1() {}
 

@@ -12,7 +12,7 @@ public class DataProviderThreadPoolSizeTest extends SimpleBaseTest {
     TestNG tng = create(DataProviderThreadPoolSizeSampleTest.class);
     tng.setGroups("parallel");
     tng.run();
-    Assert.assertEquals(DataProviderThreadPoolSizeSampleTest.getThreadCount(), 10);
+    Assert.assertEquals(BaseThreadTest.getThreadCount(), 10);
   }
 
   @Test
@@ -20,7 +20,7 @@ public class DataProviderThreadPoolSizeTest extends SimpleBaseTest {
     TestNG tng = create(DataProviderThreadPoolSizeSampleTest.class);
     tng.setGroups("sequential");
     tng.run();
-    Assert.assertEquals(DataProviderThreadPoolSizeSampleTest.getThreadCount(), 1);
+    Assert.assertEquals(BaseThreadTest.getThreadCount(), 1);
   }
 
   @Test
@@ -29,6 +29,6 @@ public class DataProviderThreadPoolSizeTest extends SimpleBaseTest {
     tng.setGroups("parallel");
     tng.setDataProviderThreadCount(3);
     tng.run();
-    Assert.assertEquals(DataProviderThreadPoolSizeSampleTest.getThreadCount(), 3);
+    Assert.assertEquals(BaseThreadTest.getThreadCount(), 3);
   }
 }

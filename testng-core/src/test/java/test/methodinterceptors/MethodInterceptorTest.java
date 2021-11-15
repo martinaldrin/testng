@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
@@ -46,7 +45,7 @@ public class MethodInterceptorTest extends SimpleBaseTest {
   private void testNullInterceptor(TestNG tng) {
     tng.setMethodInterceptor(new NullMethodInterceptor());
     TestListenerAdapter tla = new TestListenerAdapter();
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
     tng.run();
 
     Assert.assertEquals(tla.getPassedTests().size(), 0);
@@ -62,7 +61,7 @@ public class MethodInterceptorTest extends SimpleBaseTest {
     }
     TestListenerAdapter tla = new TestListenerAdapter();
     //    tng.setParallel("methods");
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
     tng.run();
 
     Assert.assertEquals(tla.getPassedTests().size(), 3);

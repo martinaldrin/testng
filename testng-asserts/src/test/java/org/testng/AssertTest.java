@@ -1,7 +1,13 @@
 package org.testng;
 
 import com.google.common.collect.ImmutableMap;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Random;
+import java.util.Set;
 import org.testng.annotations.Test;
 import org.testng.collections.Lists;
 import org.testng.collections.Maps;
@@ -601,8 +607,7 @@ public class AssertTest {
     @Override
     public boolean equals(Object o) {
       if (this == o) return true;
-      if (!(o instanceof Asymmetric)) return false;
-      if (!super.equals(o)) return false;
+      if (!(o instanceof Asymmetric) || !super.equals(o)) return false;
 
       Asymmetric that = (Asymmetric) o;
 
@@ -612,7 +617,7 @@ public class AssertTest {
     @Override
     public int hashCode() {
       int result = super.hashCode();
-      result = 31 * result + (int) character;
+      result = 31 * result + character;
       return result;
     }
   }

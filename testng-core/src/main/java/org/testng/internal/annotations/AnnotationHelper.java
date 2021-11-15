@@ -357,12 +357,12 @@ public class AnnotationHelper {
     try {
       return clazz.getAnnotation(a);
     } catch (Throwable t) {
-      String msg =
-          "Encountered problems when parsing the annotation on class "
-              + clazz.getCanonicalName()
-              + ". ";
-      msg += SUFFIX;
-      throw new TypeNotPresentException(msg, t);
+      StringBuilder msg =
+          new StringBuilder("Encountered problems when parsing the annotation on class ")
+              .append(clazz.getCanonicalName())
+              .append(". ");
+      msg.append(SUFFIX);
+      throw new TypeNotPresentException(msg.toString(), t);
     }
   }
 
@@ -373,9 +373,12 @@ public class AnnotationHelper {
       return method.getAnnotation(a);
     } catch (Throwable t) {
       String mname = method.getDeclaringClass().getCanonicalName() + "." + method.getName();
-      String msg = "Encountered problems when parsing the annotation on method " + mname + "(). ";
-      msg += SUFFIX;
-      throw new TypeNotPresentException(msg, t);
+      StringBuilder msg =
+          new StringBuilder("Encountered problems when parsing the annotation on method ")
+              .append(mname)
+              .append("(). ");
+      msg.append(SUFFIX);
+      throw new TypeNotPresentException(msg.toString(), t);
     }
   }
 
@@ -385,10 +388,12 @@ public class AnnotationHelper {
     try {
       return c.getAnnotation(a);
     } catch (Throwable t) {
-      String msg =
-          "Encountered problems when parsing the annotation on constructor " + c.getName() + ". ";
-      msg += SUFFIX;
-      throw new TypeNotPresentException(msg, t);
+      StringBuilder msg =
+          new StringBuilder("Encountered problems when parsing the annotation on constructor ")
+              .append(c.getName())
+              .append(". ");
+      msg.append(SUFFIX);
+      throw new TypeNotPresentException(msg.toString(), t);
     }
   }
 }

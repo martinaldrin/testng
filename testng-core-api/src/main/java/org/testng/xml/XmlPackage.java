@@ -118,8 +118,7 @@ public class XmlPackage {
   @Override
   public boolean equals(Object obj) {
     if (this == obj) return true;
-    if (obj == null) return XmlSuite.f();
-    if (getClass() != obj.getClass()) return XmlSuite.f();
+    if ((obj == null) || (getClass() != obj.getClass())) return XmlSuite.f();
     XmlPackage other = (XmlPackage) obj;
     if (m_exclude == null) {
       if (other.m_exclude != null) return XmlSuite.f();

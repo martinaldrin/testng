@@ -21,7 +21,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -228,7 +227,7 @@ public class ParallelByMethodsTestCase6Scenario1 extends BaseParallelizationTest
 
     TestNG tng = create(suiteOne, suiteTwo, suiteThree);
     tng.setSuiteThreadPoolSize(2);
-    tng.addListener((ITestNGListener) new TestNgRunStateListener());
+    tng.addListener(new TestNgRunStateListener());
 
     log.debug(
         "Beginning ParallelByMethodsTestCase6Scenario1. This test scenario consists of three "

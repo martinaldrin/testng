@@ -54,7 +54,7 @@ public class TestNamesMatcherTest extends SimpleBaseTest {
       dataProvider = "getData")
   public void testCloneIfContainsTestsWithNamesMatchingAnyNegativeCondition(
       XmlSuite xmlSuite, List<String> names) {
-    TestNamesMatcher testNamesHelper = new TestNamesMatcher(xmlSuite, names);
+    new TestNamesMatcher(xmlSuite, names);
   }
 
   @Test

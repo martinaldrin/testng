@@ -943,7 +943,7 @@ public class BaseParallelizationTest extends SimpleBaseTest {
         String suiteName = (String) eventLog.getData(SUITE_NAME);
 
         if (eventLog.getEvent() == LISTENER_SUITE_START) {
-          if (suitesExecuting.keySet().size() == threadPoolSize) {
+          if (suitesExecuting.size() == threadPoolSize) {
             fail(
                 "The thread pool size is "
                     + threadPoolSize
@@ -976,7 +976,7 @@ public class BaseParallelizationTest extends SimpleBaseTest {
           }
         }
 
-        if (suitesExecuting.keySet().size() < threadPoolSize
+        if (suitesExecuting.size() < threadPoolSize
             && suiteLevelEventLogs.size() - i + 1 > threadPoolSize) {
           fail(
               "The thread pool size is "

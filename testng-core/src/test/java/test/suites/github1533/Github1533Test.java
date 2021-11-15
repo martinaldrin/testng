@@ -5,7 +5,6 @@ import static org.testng.Assert.assertEquals;
 
 import java.io.IOException;
 import java.util.List;
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.TestNGException;
 import org.testng.annotations.Test;
@@ -38,7 +37,7 @@ public class Github1533Test extends SimpleBaseTest {
     assertEquals(suites.get(0).getChildSuites().size(), childSuitesCount);
     TestNG testng = create(suites);
     SuiteCounter listener = new SuiteCounter();
-    testng.addListener((ITestNGListener) listener);
+    testng.addListener(listener);
     testng.run();
     assertEquals(listener.getCounter(), suiteCounter);
     assertThat(listener.getSuiteNames()).containsExactly(suiteNames);

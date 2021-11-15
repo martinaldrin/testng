@@ -16,7 +16,6 @@ import static test.thread.parallelization.TestNgRunStateTracker.reset;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -103,7 +102,7 @@ public class ParallelByMethodsTestCase3Scenario1 extends BaseParallelizationTest
 
     TestNG tng = create(suite);
 
-    tng.addListener((ITestNGListener) new TestNgRunStateListener());
+    tng.addListener(new TestNgRunStateListener());
 
     log.debug(
         "Beginning ParallelByMethodsTestCase3Scenario1. This test scenario consists of a "

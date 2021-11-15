@@ -60,10 +60,7 @@ public class Testcase {
 
     Testcase testcase = (Testcase) o;
 
-    if (!name.equals(testcase.name)) {
-      return false;
-    }
-    if (!classname.equals(testcase.classname)) {
+    if (!name.equals(testcase.name) || !classname.equals(testcase.classname)) {
       return false;
     }
     return innerTagType.equals(testcase.innerTagType);

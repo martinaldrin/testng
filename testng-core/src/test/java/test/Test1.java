@@ -6,7 +6,6 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
 import org.testng.xml.XmlSuite;
@@ -30,7 +29,7 @@ public class Test1 extends SimpleBaseTest {
     TestNG tng = create(suite);
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 
@@ -49,7 +48,7 @@ public class Test1 extends SimpleBaseTest {
     TestNG tng = create(suite);
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 
@@ -68,7 +67,7 @@ public class Test1 extends SimpleBaseTest {
     TestNG tng = create(suite);
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 
@@ -88,7 +87,7 @@ public class Test1 extends SimpleBaseTest {
     TestNG tng = create(suite);
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 
@@ -104,7 +103,7 @@ public class Test1 extends SimpleBaseTest {
     TestNG tng = create(suite);
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener(true);
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 
@@ -127,7 +126,7 @@ public class Test1 extends SimpleBaseTest {
     TestNG tng = create(suite);
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 

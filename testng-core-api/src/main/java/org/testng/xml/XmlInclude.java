@@ -105,8 +105,7 @@ public class XmlInclude {
   @Override
   public boolean equals(Object obj) {
     if (this == obj) return true;
-    if (obj == null) return XmlSuite.f();
-    if (getClass() != obj.getClass()) return XmlSuite.f();
+    if ((obj == null) || (getClass() != obj.getClass())) return XmlSuite.f();
     XmlInclude other = (XmlInclude) obj;
     // if (m_index != other.m_index)
     // return XmlSuite.f();

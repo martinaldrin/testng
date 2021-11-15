@@ -69,8 +69,7 @@ public class ReflectionRecipesTest {
     final Method[] methods = ExactMatchTest.class.getDeclaredMethods();
     final List<Object[]> objects = new ArrayList<>();
     log.debug("exactMatchDP:");
-    for (int i = 0; i < methods.length; i++) {
-      final Method method = methods[i];
+    for (final Method method : methods) {
       final ExactMatchTest.Expectation annotation =
           method.getAnnotation(ExactMatchTest.Expectation.class);
       if (annotation != null) {
@@ -93,8 +92,7 @@ public class ReflectionRecipesTest {
     final Method[] methods = MatchArrayEndingTest.class.getDeclaredMethods();
     final List<Object[]> objects = new ArrayList<>();
     log.debug("matchArrayEndingDP:");
-    for (int i = 0; i < methods.length; i++) {
-      final Method method = methods[i];
+    for (final Method method : methods) {
       final MatchArrayEndingTest.Expectation annotation =
           method.getAnnotation(MatchArrayEndingTest.Expectation.class);
       if (annotation != null) {
@@ -200,14 +198,14 @@ public class ReflectionRecipesTest {
     Assert.assertFalse(ReflectionRecipes.isOrImplementsInterface(ITestContext.class, clazz));
   }
 
-  private static interface T {
-    public void s0(TestContextJustForTesting testContext, int i, Boolean b);
+  private interface T {
+    void s0(TestContextJustForTesting testContext, int i, Boolean b);
 
-    public void s1(int i, ITestContext iTestContext, Boolean b);
+    void s1(int i, ITestContext iTestContext, Boolean b);
 
-    public void s2(int i, Boolean b, ITestContext iTestContext);
+    void s2(int i, Boolean b, ITestContext iTestContext);
 
-    public void s3(ITestContext iTestContext1, int i, Boolean b, ITestContext iTestContext2);
+    void s3(ITestContext iTestContext1, int i, Boolean b, ITestContext iTestContext2);
   }
 
   public abstract static class ExactMatchTest {

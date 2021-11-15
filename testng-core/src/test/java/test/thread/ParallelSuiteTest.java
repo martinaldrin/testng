@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
@@ -36,7 +35,7 @@ public class ParallelSuiteTest extends SimpleBaseTest {
     TestNG tng = create();
     tng.setSuiteThreadPoolSize(SUITE_THREAD_POOL_SIZE);
     tng.setTestSuites(Collections.singletonList(getPathToResource("suite-parallel-0.xml")));
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
 
     BaseThreadTest.initThreadLog();
     tng.run(); // Shouldn't not deadlock
@@ -53,7 +52,7 @@ public class ParallelSuiteTest extends SimpleBaseTest {
     TestNG tng = create();
     tng.setSuiteThreadPoolSize(suiteThreadPoolSize);
     tng.setTestSuites(paths);
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
     if (null != randomizeSuites) {
       tng.setRandomizeSuites(randomizeSuites);
     }
@@ -68,7 +67,7 @@ public class ParallelSuiteTest extends SimpleBaseTest {
             + expectedThreadCount
             + " actual:"
             + BaseThreadTest.getThreadCount());
-    Assert.assertEquals(BaseThreadTest.getSuitesMap().keySet().size(), expectedSuiteCount);
+    Assert.assertEquals(BaseThreadTest.getSuitesMap().size(), expectedSuiteCount);
   }
 
   @Test
@@ -113,13 +112,13 @@ public class ParallelSuiteTest extends SimpleBaseTest {
     TestListenerAdapter tla = new TestListenerAdapter();
     TestNG tng = create();
     tng.setTestSuites(Collections.singletonList(getPathToResource("suite-parallel-0.xml")));
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
     BaseThreadTest.initThreadLog();
     tng.run();
 
     Map<String, Long> suitesMap = BaseThreadTest.getSuitesMap();
     Assert.assertEquals(BaseThreadTest.getThreadCount(), 1);
-    Assert.assertEquals(suitesMap.keySet().size(), 3);
+    Assert.assertEquals(suitesMap.size(), 3);
 
     final String SUITE_NAME_PREFIX = "Suite Parallel ";
     if (suitesMap.get(SUITE_NAME_PREFIX + 1) > suitesMap.get(SUITE_NAME_PREFIX + 2)) {

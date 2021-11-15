@@ -64,12 +64,16 @@ public interface ITestAnnotation extends ITestOrConfiguration, IDataProvidable {
 
   void setSingleThreaded(boolean f);
 
+  @Override
   String getDataProvider();
 
+  @Override
   void setDataProvider(String v);
 
+  @Override
   Class<?> getDataProviderClass();
 
+  @Override
   void setDataProviderClass(Class<?> v);
 
   void setRetryAnalyzer(Class<? extends IRetryAnalyzer> c);

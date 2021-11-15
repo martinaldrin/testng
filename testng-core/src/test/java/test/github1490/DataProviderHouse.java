@@ -9,7 +9,7 @@ public class DataProviderHouse {
   public static Object[][] cookies(ConstructorOrMethod method) {
     TestInfo value;
     if (method.getConstructor() != null) {
-      value = (TestInfo) method.getConstructor().getAnnotation(TestInfo.class);
+      value = method.getConstructor().getAnnotation(TestInfo.class);
     } else {
       value = method.getMethod().getAnnotation(TestInfo.class);
     }

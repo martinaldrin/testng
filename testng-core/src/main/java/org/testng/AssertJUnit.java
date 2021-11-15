@@ -79,10 +79,8 @@ public class AssertJUnit extends ArrayAsserts {
    * @param actual The actual value
    */
   public static void assertEquals(String message, Object expected, Object actual) {
-    if ((expected == null) && (actual == null)) {
-      return;
-    }
-    if ((expected != null) && expected.equals(actual)) {
+    if (((expected == null) && (actual == null))
+        || ((expected != null) && expected.equals(actual))) {
       return;
     }
     failNotEquals(message, expected, actual);
@@ -106,10 +104,8 @@ public class AssertJUnit extends ArrayAsserts {
    * @param actual The actual value
    */
   public static void assertEquals(String message, String expected, String actual) {
-    if ((expected == null) && (actual == null)) {
-      return;
-    }
-    if ((expected != null) && expected.equals(actual)) {
+    if (((expected == null) && (actual == null))
+        || ((expected != null) && expected.equals(actual))) {
       return;
     }
     throw new AssertionError(format(message, expected, actual));

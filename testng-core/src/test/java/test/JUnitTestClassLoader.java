@@ -1,10 +1,15 @@
 package test;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotEquals;
+import static org.testng.Assert.fail;
 
 import java.io.File;
 import java.util.List;
-import org.testng.*;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+import org.testng.TestNG;
 import org.testng.annotations.Test;
 import testhelper.CompiledCode;
 import testhelper.SimpleCompiler;
@@ -98,22 +103,29 @@ public class JUnitTestClassLoader extends ClassLoader {
     public int success = 0;
     public int failure = 0;
 
+    @Override
     public void onTestSuccess(ITestResult result) {
       success++;
     }
 
+    @Override
     public void onTestFailure(ITestResult result) {
       failure++;
     }
 
+    @Override
     public void onTestStart(ITestResult result) {}
 
+    @Override
     public void onTestSkipped(ITestResult result) {}
 
+    @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {}
 
+    @Override
     public void onStart(ITestContext context) {}
 
+    @Override
     public void onFinish(ITestContext context) {}
   }
 }

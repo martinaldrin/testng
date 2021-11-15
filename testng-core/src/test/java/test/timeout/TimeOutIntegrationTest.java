@@ -2,7 +2,6 @@ package test.timeout;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
 import org.testng.xml.XmlSuite;
@@ -17,7 +16,7 @@ public class TimeOutIntegrationTest extends SimpleBaseTest {
     tng.setParallel(XmlSuite.ParallelMode.TESTS);
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 
@@ -31,7 +30,7 @@ public class TimeOutIntegrationTest extends SimpleBaseTest {
     TestNG tng = create(GitHub1314Sample.class);
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 

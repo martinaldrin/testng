@@ -24,7 +24,17 @@ import org.testng.annotations.IConfigurationAnnotation;
 import org.testng.collections.Lists;
 import org.testng.collections.Maps;
 import org.testng.collections.Sets;
-import org.testng.internal.*;
+import org.testng.internal.ClassHelper;
+import org.testng.internal.ConfigurationMethod;
+import org.testng.internal.ConstructorOrMethod;
+import org.testng.internal.IConfiguration;
+import org.testng.internal.ITestResultNotifier;
+import org.testng.internal.MethodHelper;
+import org.testng.internal.Parameters;
+import org.testng.internal.RuntimeBehavior;
+import org.testng.internal.TestListenerHelper;
+import org.testng.internal.TestResult;
+import org.testng.internal.Utils;
 import org.testng.internal.annotations.AnnotationHelper;
 import org.testng.internal.invokers.ConfigMethodArguments.Builder;
 import org.testng.internal.thread.ThreadUtil;
@@ -60,6 +70,7 @@ class ConfigInvoker extends BaseInvoker implements IConfigInvoker {
    * @return false if this class has successfully run all its @Configuration method or true if at
    *     least one of these methods failed.
    */
+  @Override
   public boolean hasConfigurationFailureFor(
       ITestNGMethod testNGMethod, String[] groups, IClass testClass, Object instance) {
     boolean result = false;
@@ -109,6 +120,7 @@ class ConfigInvoker extends BaseInvoker implements IConfigInvoker {
    *
    * @param arguments - A {@link GroupConfigMethodArguments} object.
    */
+  @Override
   public void invokeBeforeGroupsConfigurations(GroupConfigMethodArguments arguments) {
     List<ITestNGMethod> filteredMethods = Lists.newArrayList();
     String[] groups = arguments.getTestMethod().getGroups();
@@ -156,6 +168,7 @@ class ConfigInvoker extends BaseInvoker implements IConfigInvoker {
     return itm.hasBeforeGroupsConfiguration() || itm.hasAfterGroupsConfiguration();
   }
 
+  @Override
   public void invokeAfterGroupsConfigurations(GroupConfigMethodArguments arguments) {
     // Skip this if the current method doesn't belong to any group
     // (only a method that belongs to a group can trigger the invocation
@@ -219,6 +232,7 @@ class ConfigInvoker extends BaseInvoker implements IConfigInvoker {
     arguments.getGroupMethods().removeAfterGroups(filteredGroups.keySet());
   }
 
+  @Override
   public void invokeConfigurations(ConfigMethodArguments arguments) {
     if (arguments.getConfigMethods().length == 0) {
       log(5, "No configuration methods found");
@@ -475,10 +489,7 @@ class ConfigInvoker extends BaseInvoker implements IConfigInvoker {
   }
 
   private static boolean isConfigMethodEligibleForScrutiny(ITestNGMethod tm) {
-    if (!tm.isBeforeMethodConfiguration()) {
-      return false;
-    }
-    if (!(tm instanceof ConfigurationMethod)) {
+    if (!tm.isBeforeMethodConfiguration() || !(tm instanceof ConfigurationMethod)) {
       return false;
     }
     ConfigurationMethod cfg = (ConfigurationMethod) tm;

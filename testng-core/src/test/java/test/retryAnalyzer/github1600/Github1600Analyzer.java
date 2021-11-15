@@ -15,7 +15,6 @@ public class Github1600Analyzer implements IRetryAnalyzer {
   public boolean retry(ITestResult iTestResult) {
     String attribute = (String) iTestResult.getAttribute(RETRY);
     if (NO.equalsIgnoreCase(attribute)) {
-      return false;
     } else if (YES.equalsIgnoreCase(attribute) || retryCount < MAX_RETRY_COUNT) {
       retryCount++;
       return true;

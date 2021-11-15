@@ -3,6 +3,7 @@ package test.configuration;
 import java.util.Arrays;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import test.configuration.sample.BaseSuiteTestSample;
 import test.configuration.sample.ConfigurationTestSample;
 import test.configuration.sample.ExternalConfigurationClassSample;
 import test.configuration.sample.MethodCallOrderTestSample;
@@ -27,6 +28,6 @@ public class ConfigurationTest extends ConfigurationBaseTest {
   @Test
   public void testSuite() {
     testConfiguration(SuiteTestSample.class);
-    Assert.assertEquals(Arrays.asList(1, 2, 3, 4, 5), SuiteTestSample.m_order);
+    Assert.assertEquals(Arrays.asList(1, 2, 3, 4, 5), BaseSuiteTestSample.m_order);
   }
 }

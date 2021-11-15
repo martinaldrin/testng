@@ -1,7 +1,6 @@
 package test.testng1232;
 
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
 import org.testng.xml.XmlSuite;
@@ -34,9 +33,9 @@ public class TestListenerInstances extends SimpleBaseTest {
     TestNG tng = createTestNGInstanceFor(clazz, injectListenerViaTag);
     TestListenerFor1232.resetCounters();
     TestListenerFor1232 listener = new TestListenerFor1232();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
     TestListenerFor1232 anotherListener = new TestListenerFor1232();
-    tng.addListener((ITestNGListener) anotherListener);
+    tng.addListener(anotherListener);
     tng.run();
     for (CounterTypes type : CounterTypes.values()) {
       Assert.assertEquals(TestListenerFor1232.counters.get(type).intValue(), 1);

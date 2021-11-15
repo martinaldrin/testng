@@ -101,19 +101,19 @@ class SimpleObjectDispenser implements IObjectDispenser {
     }
 
     if (result == null && create) {
-      String suffix = "instantiated";
+      StringBuilder suffix = new StringBuilder("instantiated");
       if (!Modifier.isPublic(declaringClass.getModifiers())) {
-        suffix += "/accessed.";
+        suffix.append("/accessed.");
       }
       if (Strings.isNotNullAndNotEmpty(errorMsgPrefix)) {
-        suffix = suffix + ". Root cause: " + errorMsgPrefix;
+        suffix.append(". Root cause: ").append(errorMsgPrefix);
       }
       throw new TestNGException(
           "An error occurred while instantiating class "
               + declaringClass.getName()
               + ". "
               + "Check to make sure it can be "
-              + suffix);
+              + suffix.toString());
     }
 
     return result;

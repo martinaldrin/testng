@@ -4,9 +4,6 @@ import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 
 public class SampleTest {
-  private int capacity = 10;
-  private float loadFactor = 0.3f;
-
   public class SampleTestTestFactory {
     public SampleTestTestFactory() {} // CTR necessary ?
 
@@ -22,8 +19,6 @@ public class SampleTest {
 
   public SampleTest(int capacity, float loadFactor) {
     System.out.println("CREATING TEST WITH " + capacity);
-    this.capacity = capacity;
-    this.loadFactor = loadFactor;
   }
 
   @Test

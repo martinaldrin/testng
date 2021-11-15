@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Arrays;
 import java.util.Iterator;
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -37,7 +36,7 @@ public class PreserveOrderTest extends SimpleBaseTest {
     tng.setXmlSuites(Arrays.asList(suite));
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 
@@ -73,7 +72,7 @@ public class PreserveOrderTest extends SimpleBaseTest {
     tng.setXmlSuites(Arrays.asList(suite));
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 
@@ -89,7 +88,7 @@ public class PreserveOrderTest extends SimpleBaseTest {
     tng.setXmlSuites(Arrays.asList(suite));
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 
@@ -114,7 +113,7 @@ public class PreserveOrderTest extends SimpleBaseTest {
     TestNG tng = create(Issue1122Sample.class);
 
     InvokedMethodNameListener listener = new InvokedMethodNameListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
 
     tng.run();
 

@@ -2,8 +2,9 @@ package test.junitreports;
 
 import static javax.xml.XMLConstants.W3C_XML_SCHEMA_NS_URI;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.testng.Assert.*;
-import static test.junitreports.TestClassContainerForGithubIssue1265.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
 
 import com.beust.jcommander.internal.Lists;
 import java.io.File;
@@ -33,6 +34,9 @@ import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 import test.SimpleBaseTest;
 import test.TestHelper;
+import test.junitreports.TestClassContainerForGithubIssue1265.FirstTest;
+import test.junitreports.TestClassContainerForGithubIssue1265.SecondTest;
+import test.junitreports.TestClassContainerForGithubIssue1265.ThirdTest;
 import test.junitreports.issue2124.TestClassSample;
 import test.junitreports.issue993.SampleTestClass;
 

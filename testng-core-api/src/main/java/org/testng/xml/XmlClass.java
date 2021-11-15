@@ -214,8 +214,7 @@ public class XmlClass implements Cloneable {
     if (this == obj) {
       return true;
     }
-    if (obj == null) return XmlSuite.f();
-    if (getClass() != obj.getClass()) return XmlSuite.f();
+    if ((obj == null) || (getClass() != obj.getClass())) return XmlSuite.f();
     XmlClass other = (XmlClass) obj;
     if (other.m_loadClasses != m_loadClasses) {
       return XmlSuite.f();

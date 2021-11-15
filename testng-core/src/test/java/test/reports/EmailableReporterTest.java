@@ -6,7 +6,6 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.security.Permission;
 import org.testng.IReporter;
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -120,7 +119,7 @@ public class EmailableReporterTest extends SimpleBaseTest {
       if (reporter instanceof EmailableReporter) {
         ((EmailableReporter) reporter).setFileName(filename);
       }
-      testNG.addListener((ITestNGListener) reporter);
+      testNG.addListener(reporter);
       testNG.setTestClasses(new Class[] {ReporterSample.class});
       testNG.run();
     } finally {

@@ -58,13 +58,13 @@ public class IssueTest extends ClassLoader {
   }
 
   private static SourceCode missingTypeAtMethodLevel() throws IOException {
-    String source = "import org.testng.annotations.Test\n;";
-    source += "public class Sample1 {\n";
-    source += "  @Test(expectedExceptions = MyFancyException.class)\n";
-    source += "  public void testMethod() {\n";
-    source += "  }\n";
-    source += "}\n";
-    return new SourceCode("Sample1", source, dir, false);
+    StringBuilder source = new StringBuilder("import org.testng.annotations.Test\n;");
+    source.append("public class Sample1 {\n");
+    source.append("  @Test(expectedExceptions = MyFancyException.class)\n");
+    source.append("  public void testMethod() {\n");
+    source.append("  }\n");
+    source.append("}\n");
+    return new SourceCode("Sample1", source.toString(), dir, false);
   }
 
   private static SourceCode exception1() throws IOException {
@@ -73,13 +73,13 @@ public class IssueTest extends ClassLoader {
   }
 
   private static SourceCode missingTypeAtClassLevel() throws IOException {
-    String source = "import org.testng.annotations.Test\n;";
-    source += "@Test(expectedExceptions = AnotherException.class)\n";
-    source += "public class Sample2 {\n";
-    source += "  public void testMethod() {\n";
-    source += "  }\n";
-    source += "}\n";
-    return new SourceCode("Sample2", source, dir, false);
+    StringBuilder source = new StringBuilder("import org.testng.annotations.Test\n;");
+    source.append("@Test(expectedExceptions = AnotherException.class)\n");
+    source.append("public class Sample2 {\n");
+    source.append("  public void testMethod() {\n");
+    source.append("  }\n");
+    source.append("}\n");
+    return new SourceCode("Sample2", source.toString(), dir, false);
   }
 
   private static SourceCode missingTypeAtBaseClass() throws IOException {
@@ -89,10 +89,10 @@ public class IssueTest extends ClassLoader {
   }
 
   private static SourceCode childClass() throws IOException {
-    String source = "public class ChildClass extends MyBaseClass {\n;";
-    source += "public void testMethod() {}\n";
-    source += "}\n";
-    return new SourceCode("ChildClass", source, dir, false);
+    StringBuilder source = new StringBuilder("public class ChildClass extends MyBaseClass {\n;");
+    source.append("public void testMethod() {}\n");
+    source.append("}\n");
+    return new SourceCode("ChildClass", source.toString(), dir, false);
   }
 
   private static SourceCode exception2() throws IOException {
@@ -106,30 +106,30 @@ public class IssueTest extends ClassLoader {
   }
 
   private static SourceCode missingTypeAtConstructor() throws IOException {
-    String source = "import org.testng.annotations.Factory;\n";
-    source += "public class FactorySample {\n";
-    source += "  @Factory(dataProviderClass = ExampleDP.class)\n";
-    source += "  public FactorySample(Object object) { }\n";
-    source += "}\n";
-    return new SourceCode("FactorySample", source, dir, false);
+    StringBuilder source = new StringBuilder("import org.testng.annotations.Factory;\n");
+    source.append("public class FactorySample {\n");
+    source.append("  @Factory(dataProviderClass = ExampleDP.class)\n");
+    source.append("  public FactorySample(Object object) { }\n");
+    source.append("}\n");
+    return new SourceCode("FactorySample", source.toString(), dir, false);
   }
 
   private static SourceCode dataProvider() throws IOException {
-    String source = "import org.testng.annotations.DataProvider;\n";
-    source += "public class ExampleDP {\n";
-    source += "  @DataProvider\n";
-    source += "  public Object[][] dp() {\n";
-    source += "    return new Object[][] {{}};";
-    source += "  }\n";
-    source += "}";
-    return new SourceCode("ExampleDP", source, dir, true);
+    StringBuilder source = new StringBuilder("import org.testng.annotations.DataProvider;\n");
+    source.append("public class ExampleDP {\n");
+    source.append("  @DataProvider\n");
+    source.append("  public Object[][] dp() {\n");
+    source.append("    return new Object[][] {{}};");
+    source.append("  }\n");
+    source.append("}");
+    return new SourceCode("ExampleDP", source.toString(), dir, true);
   }
 
   private static SourceCode missingTypeAtListenerAnnotation() throws IOException {
-    String source = "import org.testng.annotations.Listeners\n";
-    source += "@Listeners(SampleListener.class)\n";
-    source += "public class Sample4 {}\n";
-    return new SourceCode("Sample4", source, dir, false);
+    StringBuilder source = new StringBuilder("import org.testng.annotations.Listeners\n");
+    source.append("@Listeners(SampleListener.class)\n");
+    source.append("public class Sample4 {}\n");
+    return new SourceCode("Sample4", source.toString(), dir, false);
   }
 
   private static SourceCode listener() throws IOException {

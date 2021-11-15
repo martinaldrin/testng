@@ -130,10 +130,7 @@ public class MethodHelper {
       }
 
       if (!foundAtLeastAMethod) {
-        if (m.ignoreMissingDependencies()) {
-          continue;
-        }
-        if (m.isAlwaysRun()) {
+        if (m.ignoreMissingDependencies() || m.isAlwaysRun()) {
           continue;
         }
         Method maybeReferringTo = findMethodByName(m, regexp);

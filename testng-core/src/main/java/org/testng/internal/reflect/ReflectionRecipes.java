@@ -3,7 +3,13 @@ package org.testng.internal.reflect;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestNGException;
@@ -198,10 +204,7 @@ public final class ReflectionRecipes {
    * @return matches or not
    */
   public static boolean matchArrayEnding(final Class<?>[] classes, final Object[] args) {
-    if (classes.length < 1) {
-      return false;
-    }
-    if (!classes[classes.length - 1].isArray()) {
+    if ((classes.length < 1) || !classes[classes.length - 1].isArray()) {
       return false;
     }
     boolean matching = true;

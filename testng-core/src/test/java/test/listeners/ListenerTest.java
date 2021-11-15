@@ -6,7 +6,9 @@ import static org.assertj.core.api.Assertions.entry;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import org.testng.*;
+import org.testng.Assert;
+import org.testng.TestListenerAdapter;
+import org.testng.TestNG;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -261,9 +263,9 @@ public class ListenerTest extends SimpleBaseTest {
     MultiListener listener = new MultiListener();
     TestNG tng = create(SimpleSample.class);
     // Keep using deprecated addListener methods. It is what the test is testing
-    tng.addListener((ITestNGListener) listener);
-    tng.addListener((ITestNGListener) listener);
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
+    tng.addListener(listener);
+    tng.addListener(listener);
     tng.run();
     Assert.assertEquals(listener.getOnSuiteStartCount(), 1);
     Assert.assertEquals(listener.getOnSuiteFinishCount(), 1);

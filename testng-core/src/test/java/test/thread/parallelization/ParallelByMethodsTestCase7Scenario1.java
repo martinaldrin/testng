@@ -14,7 +14,6 @@ import static test.thread.parallelization.TestNgRunStateTracker.getTestMethodLev
 import static test.thread.parallelization.TestNgRunStateTracker.reset;
 
 import java.util.List;
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -76,7 +75,7 @@ public class ParallelByMethodsTestCase7Scenario1 extends BaseParallelizationTest
 
     TestNG tng = create(suite);
 
-    tng.addListener((ITestNGListener) new TestNgRunStateListener());
+    tng.addListener(new TestNgRunStateListener());
 
     log.debug(
         "Beginning ParallelByMethodsTestCase7Scenario1. This test scenario consists of a "

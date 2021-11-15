@@ -1,12 +1,25 @@
 package test.priority.parallel;
 
 import static org.testng.Assert.assertEquals;
-import static test.thread.parallelization.TestNgRunStateTracker.*;
+import static test.thread.parallelization.TestNgRunStateTracker.getAllSuiteLevelEventLogs;
+import static test.thread.parallelization.TestNgRunStateTracker.getAllSuiteListenerStartEventLogs;
+import static test.thread.parallelization.TestNgRunStateTracker.getAllTestLevelEventLogs;
+import static test.thread.parallelization.TestNgRunStateTracker.getAllTestMethodLevelEventLogs;
+import static test.thread.parallelization.TestNgRunStateTracker.getSuiteAndTestLevelEventLogsForSuite;
+import static test.thread.parallelization.TestNgRunStateTracker.getSuiteLevelEventLogsForSuite;
+import static test.thread.parallelization.TestNgRunStateTracker.getSuiteListenerFinishEventLog;
+import static test.thread.parallelization.TestNgRunStateTracker.getSuiteListenerStartEventLog;
+import static test.thread.parallelization.TestNgRunStateTracker.getTestLevelEventLogsForSuite;
+import static test.thread.parallelization.TestNgRunStateTracker.getTestLevelEventLogsForTest;
+import static test.thread.parallelization.TestNgRunStateTracker.getTestListenerFinishEventLog;
+import static test.thread.parallelization.TestNgRunStateTracker.getTestListenerStartEventLog;
+import static test.thread.parallelization.TestNgRunStateTracker.getTestMethodLevelEventLogsForSuite;
+import static test.thread.parallelization.TestNgRunStateTracker.getTestMethodLevelEventLogsForTest;
+import static test.thread.parallelization.TestNgRunStateTracker.reset;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -73,7 +86,7 @@ public class EfficientPriorityParallelizationTest extends BaseParallelizationTes
 
     TestNG tng = create(suiteOne);
     tng.setSuiteThreadPoolSize(THREAD_POOL_SIZE);
-    tng.addListener((ITestNGListener) new TestNgRunStateListener());
+    tng.addListener(new TestNgRunStateListener());
 
     log.debug(
         "Beginning EfficientPriorityParallelizationTest. This test scenario consists of 1 suite "

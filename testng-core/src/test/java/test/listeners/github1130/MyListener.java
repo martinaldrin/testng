@@ -19,10 +19,12 @@ public class MyListener implements ISuiteListener, IClassListener {
     count++;
   }
 
+  @Override
   public void onStart(ISuite suite) {
     beforeSuiteCount.add(this.toString());
   }
 
+  @Override
   public void onBeforeClass(ITestClass testClass) {
     beforeClassCount.add(this.toString());
   }
@@ -41,7 +43,9 @@ public class MyListener implements ISuiteListener, IClassListener {
 
   public void onFinish(ITestContext context) {}
 
+  @Override
   public void onFinish(ISuite suite) {}
 
+  @Override
   public void onAfterClass(ITestClass testClass) {}
 }

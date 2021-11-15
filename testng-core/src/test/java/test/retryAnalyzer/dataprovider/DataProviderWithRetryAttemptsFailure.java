@@ -5,8 +5,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class DataProviderWithRetryAttemptsFailure {
-  private static int countWithObjectAndStringArrayForFailure = 3;
-
   @DataProvider(name = "getObjectData")
   public Object[][] getObjectData() {
     return new Object[][] {new Object[] {false, "abc1", "cdf1"}};

@@ -119,7 +119,7 @@ public final class InvocationCountTest implements IRetryAnalyzer {
   @Test(retryAnalyzer = InvocationCountTest.class, dataProvider = "dataProvider")
   public void testAnnotationWithDataProvider(int paf, boolean test) {
     executionNumber++;
-    if (paf == 2 && test == false) {
+    if (paf == 2 && !test) {
       if (r2 >= 1) {
         r2--;
         fail();
@@ -133,11 +133,11 @@ public final class InvocationCountTest implements IRetryAnalyzer {
   @Test(retryAnalyzer = InvocationCountTest.class, dataProvider = "dataProvider2")
   public void testAnnotationWithDataProviderAndRecreateParameters(boolean dummy) {
     if (r3 == 1) {
-      this.value = 0;
+      InvocationCountTest.value = 0;
       r3--;
       fail();
     } else if (r3 == 0) {
-      assertEquals(this.value, 42);
+      assertEquals(InvocationCountTest.value, 42);
     }
   }
 

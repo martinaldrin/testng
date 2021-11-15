@@ -1835,12 +1835,7 @@ public class Assert {
       return null;
     }
 
-    if (actual == null || expected == null) {
-      // Keep the back compatible
-      return "Sets not equal: expected: " + expected + " and actual: " + actual;
-    }
-
-    if (expected.size() != actual.size()) {
+    if (actual == null || expected == null || (expected.size() != actual.size())) {
       return "Sets not equal: expected: " + expected + " and actual: " + actual;
     }
 

@@ -1,7 +1,5 @@
 package org.testng.internal.invokers;
 
-import static org.testng.internal.Parameters.MethodParameters;
-
 import java.util.Map;
 import org.testng.DataProviderHolder;
 import org.testng.ITestContext;
@@ -9,6 +7,7 @@ import org.testng.ITestNGMethod;
 import org.testng.ITestObjectFactory;
 import org.testng.ITestResult;
 import org.testng.internal.Parameters;
+import org.testng.internal.Parameters.MethodParameters;
 import org.testng.internal.TestResult;
 import org.testng.internal.Utils;
 import org.testng.internal.annotations.IAnnotationFinder;

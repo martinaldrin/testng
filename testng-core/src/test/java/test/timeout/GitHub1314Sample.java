@@ -14,9 +14,7 @@ public class GitHub1314Sample {
       dependsOnMethods = {"iWorkWell"})
   private void iHangHorribly() {
     System.out.println("Test2");
-    while (true) {
-      int two = 1 + 1;
-    }
+    while (true) {}
   }
 
   @Test(dependsOnMethods = {"iHangHorribly"})

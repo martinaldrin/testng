@@ -125,9 +125,6 @@ public class Logger {
   /** The logger's level */
   private final int level;
 
-  /** The logger's name. */
-  private final Class klass;
-
   private final String m_className;
 
   /**
@@ -310,7 +307,6 @@ public class Logger {
 
   private Logger(Class pClass, int pLevel) {
     level = pLevel;
-    klass = pClass;
     m_className = pClass.getName().substring(pClass.getName().lastIndexOf('.') + 1);
   }
 
@@ -379,9 +375,7 @@ public class Logger {
       if (!logger.startsWith(PREFIX)) {
         throw new IllegalArgumentException("Illegal property value: " + logger);
       }
-      if (logger.equals(DEBUG_PROPERTY)) {
-        // Already handled
-      } else if (logger.equals(ROOT_LOGGER)) {
+      if (logger.equals(DEBUG_PROPERTY) || logger.equals(ROOT_LOGGER)) {
         // Already handled
       } else {
         if (!logger.startsWith(LOGGER_PREFIX)) {

@@ -15,7 +15,11 @@ import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.collections.Lists;
 import org.testng.collections.Sets;
-import org.testng.internal.*;
+import org.testng.internal.ConfigurationGroupMethods;
+import org.testng.internal.ITestClassConfigInfo;
+import org.testng.internal.RuntimeBehavior;
+import org.testng.internal.TestMethodComparator;
+import org.testng.internal.TestMethodContainer;
 import org.testng.internal.invokers.ConfigMethodArguments.Builder;
 import org.testng.thread.IWorker;
 

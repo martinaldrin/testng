@@ -1,7 +1,12 @@
 package org.testng.internal;
 
 import java.util.List;
-import org.testng.*;
+import org.testng.IConfigurable;
+import org.testng.IConfigurationListener;
+import org.testng.IExecutionListener;
+import org.testng.IHookable;
+import org.testng.IInjectorFactory;
+import org.testng.ITestObjectFactory;
 import org.testng.internal.annotations.IAnnotationFinder;
 import org.testng.thread.IExecutorFactory;
 

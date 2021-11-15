@@ -1,6 +1,7 @@
 package test.factory.github1631;
 
-import org.testng.*;
+import org.testng.Assert;
+import org.testng.TestNG;
 import org.testng.annotations.Test;
 import test.SimpleBaseTest;
 

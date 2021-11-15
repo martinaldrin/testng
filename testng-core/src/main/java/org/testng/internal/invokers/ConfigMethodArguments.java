@@ -42,14 +42,17 @@ public class ConfigMethodArguments extends MethodArguments {
     return suite;
   }
 
+  @Override
   public Map<String, String> getParameters() {
     return params;
   }
 
+  @Override
   public Object[] getParameterValues() {
     return parameterValues;
   }
 
+  @Override
   public Object getInstance() {
     return instance;
   }

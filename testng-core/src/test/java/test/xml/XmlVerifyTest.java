@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.lang.reflect.Method;
 import java.util.Collections;
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.TestNGException;
@@ -68,7 +67,7 @@ public class XmlVerifyTest extends SimpleBaseTest {
       TestNG tng = create();
       String testngXmlPath = getPathToResource("suite1.xml");
       tng.setTestSuites(Collections.singletonList(testngXmlPath));
-      tng.addListener((ITestNGListener) tla);
+      tng.addListener(tla);
       tng.run();
     } catch (TestNGException ex) {
       Assert.assertEquals(tla.getPassedTests().size(), 0);

@@ -4,7 +4,6 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
-import org.testng.ITestNGListener;
 import org.testng.ITestResult;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
@@ -17,7 +16,7 @@ public class InvokedMethodListenerTest extends SimpleBaseTest {
     TestNG tng = create();
     tng.setTestClasses(classes);
 
-    tng.addListener((ITestNGListener) l);
+    tng.addListener(l);
     tng.run();
   }
 
@@ -56,7 +55,7 @@ public class InvokedMethodListenerTest extends SimpleBaseTest {
   public void sameMethodInvokedMultipleTimesShouldHaveDifferentTimeStamps() {
     TestNG tng = create(Sample.class);
     InvokedMethodListener listener = new InvokedMethodListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
     tng.run();
     List<IInvokedMethod> m = listener.getInvokedMethods();
     IInvokedMethod beforeSuite = m.get(0);
@@ -78,7 +77,7 @@ public class InvokedMethodListenerTest extends SimpleBaseTest {
   public void testMethodsWithExpectedExceptionsShouldShowUpAsPass() {
     TestNG tng = create(Sample2.class);
     Sample2.Sample2InvokedMethodListener l = new Sample2().new Sample2InvokedMethodListener();
-    tng.addListener((ITestNGListener) l);
+    tng.addListener(l);
     tng.run();
 
     Assert.assertTrue(l.isSuccess);
@@ -128,7 +127,7 @@ public class InvokedMethodListenerTest extends SimpleBaseTest {
     tng.setParallel(XmlSuite.ParallelMode.NONE);
     tng.setPreserveOrder(true);
     InvokedMethodListener listener = new InvokedMethodListener();
-    tng.addListener((ITestNGListener) listener);
+    tng.addListener(listener);
     tng.run();
     List<IInvokedMethod> m = listener.getInvokedMethods();
     Assert.assertEquals(m.get(0).getTestMethod().getMethodName(), "someMethod1");

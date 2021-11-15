@@ -1009,7 +1009,7 @@ public class TestNgRunStateTracker {
         sb.append(", Data provider param: ").append(getData(EventInfo.DATA_PROVIDER_PARAM));
       }
 
-      Date now = new Date(timeOfEvent);
+      new Date(timeOfEvent);
       SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
       sb.append(", Time of event: ").append(sdfDate.format(timeOfEvent));

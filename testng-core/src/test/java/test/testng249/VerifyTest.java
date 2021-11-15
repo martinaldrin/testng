@@ -3,7 +3,6 @@ package test.testng249;
 import java.util.Arrays;
 import java.util.Collections;
 import org.testng.Assert;
-import org.testng.ITestNGListener;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 import org.testng.annotations.Test;
@@ -31,7 +30,7 @@ public class VerifyTest extends SimpleBaseTest {
     TestNG tng = new TestNG();
     tng.setXmlSuites(Collections.singletonList(suite));
     TestListenerAdapter tla = new TestListenerAdapter();
-    tng.addListener((ITestNGListener) tla);
+    tng.addListener(tla);
     tng.run();
 
     Assert.assertEquals(tla.getPassedTests().size(), 2);

@@ -36,13 +36,9 @@ public class ExpectedExceptionsHolder {
    * @return true if the exception that was just thrown is part of the expected exceptions
    */
   public boolean isExpectedException(Throwable ite) {
-    if (hasNoExpectedClasses()) {
-      return false;
-    }
-
     // TestException is the wrapper exception that TestNG will be throwing when an exception was
     // expected but not thrown
-    if (ite.getClass() == TestException.class) {
+    if (hasNoExpectedClasses() || (ite.getClass() == TestException.class)) {
       return false;
     }
 

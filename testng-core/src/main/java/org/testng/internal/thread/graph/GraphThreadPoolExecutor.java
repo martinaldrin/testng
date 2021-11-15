@@ -58,6 +58,7 @@ public class GraphThreadPoolExecutor<T> extends ThreadPoolExecutor
     }
   }
 
+  @Override
   public void run() {
     synchronized (m_graph) {
       List<T> freeNodes = m_graph.getFreeNodes();
@@ -73,8 +74,7 @@ public class GraphThreadPoolExecutor<T> extends ThreadPoolExecutor
     List<IWorker<T>> workers = m_factory.createWorkers(freeNodes);
     mapNodeToWorker(workers, freeNodes);
 
-    for (int ix = 0; ix < workers.size(); ix++) {
-      IWorker<T> worker = workers.get(ix);
+    for (IWorker<T> worker : workers) {
       mapNodeToParent(freeNodes);
       setStatus(worker, Status.RUNNING);
       try {

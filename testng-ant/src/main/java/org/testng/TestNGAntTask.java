@@ -1050,9 +1050,7 @@ public class TestNGAntTask extends Task {
    */
   public void addConfiguredPropertySet(PropertySet sysPropertySet) {
     Properties properties = sysPropertySet.getProperties();
-    log(
-        properties.keySet().size() + " properties found in nested propertyset",
-        Project.MSG_VERBOSE);
+    log(properties.size() + " properties found in nested propertyset", Project.MSG_VERBOSE);
     for (Object propKeyObj : properties.keySet()) {
       String propKey = (String) propKeyObj;
       Environment.Variable sysProp = new Environment.Variable();
